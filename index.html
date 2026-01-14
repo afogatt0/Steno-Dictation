@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StenoFlow Pro | AI Scanner Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body class="light-theme">
+
+<div class="container">
+    <header>
+        <h1>Steno Dictation</h1>
+        <button id="themeToggle" class="btn-icon" onclick="toggleTheme()">🌓</button>
+    </header>
+    
+    <div id="displayArea">Press Play or Scan a document to begin...</div>
+
+    <div class="settings-grid">
+        <div class="input-group">
+            <label class="label-text">Voice Actor</label>
+            <select id="voiceSelect"></select>
+        </div>
+        <div class="input-group">
+            <label class="label-text">Speed (WPM)</label>
+            <div class="speed-row">
+                <input type="range" id="wpmSlider" min="15" max="250" value="50">
+                <span id="wpmVal">50</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-section">
+        <div class="stats">
+            <label class="label-text">Practice Text</label>
+            <span class="word-count"><span id="wordCount">0</span> words</span>
+        </div>
+        <div class="scanner-bar">
+            <button type="button" class="btn-scan" onclick="startScanner()">📷 Scan Text</button>
+        </div>
+        <textarea id="textInput" oninput="initDisplay()">the of to and a in is it you that he was for on are with as I his they be at one have this from or had by but what some we can out other were which do their time if will how said an each tell does set three want well also play small end put home read hand large even land here must big high such follow act why ask men change went light kind off need house picture try us again animal point mother world near build self earth father.</textarea>
+    </div>
+
+    <div class="actions">
+        <button id="mainBtn" class="btn-play" onclick="handlePlay()">PLAY</button>
+        <button class="btn-stop" onclick="reset()">RESET</button>
+    </div>
+</div>
+
+<div id="cameraModal" class="modal">
+    <div class="modal-content">
+        <video id="video" width="100%" autoplay playsinline></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <div id="ocrStatus" class="status-msg">Position text in view</div>
+        <div class="modal-actions">
+            <button onclick="captureImage()" class="btn-play">Capture</button>
+            <button onclick="closeScanner()" class="btn-stop">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
+</script>
+</body>
+</html>
