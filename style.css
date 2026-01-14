@@ -43,7 +43,6 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
     margin-top: 5px;
     height: fit-content;
-    
 }
 
 header { 
@@ -63,20 +62,19 @@ h1 { font-size: 20px; margin: 0; }
     border: 2px solid var(--border); 
     border-radius: 12px; 
     margin-bottom: 15px; 
-    /* CHANGED: Monospace for better rhythm reading */
     font-family: 'Courier New', Courier, monospace; 
     font-size: 17px; 
     line-height: 1.2;
     background: var(--card); 
     overflow-y: auto;
-    white-space: pre-wrap; /* Preserves structure */
+    white-space: pre-wrap; 
 }
 
 .word { 
     color: var(--muted); 
     padding: 2px 4px; 
     display: inline-block; 
-    cursor: pointer; /* Indicates Click-to-Jump */
+    cursor: pointer;
     border-radius: 3px;
 }
 .word:hover { background-color: var(--border); }
@@ -113,8 +111,35 @@ select, textarea {
 
 textarea { height: 100px; margin-bottom: 10px; resize: none; font-family: sans-serif; }
 
-.speed-row { display: flex; align-items: center; gap: 10px; }
-#wpmVal { font-weight: bold; color: var(--primary); min-width: 35px; }
+/* Speed Control Row Updated */
+.speed-row { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+#wpmVal { font-weight: bold; color: var(--primary); min-width: 35px; text-align: right; }
+#wpmSlider { flex-grow: 1; }
+
+/* NEW: Styles for the +/- buttons */
+.btn-control {
+    background: var(--border);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+.btn-control:active { background: var(--muted); transform: scale(0.95); }
+
 
 /* Scanner Bar */
 .scanner-bar { margin-bottom: 12px; text-align: right; }

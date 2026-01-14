@@ -37,6 +37,24 @@ function loadSavedText() {
     }
 }
 
+// --- NEW SPEED ADJUSTMENT FUNCTION ---
+function adjustSpeed(amount) {
+    const slider = document.getElementById('wpmSlider');
+    const display = document.getElementById('wpmVal');
+    
+    // Calculate new value
+    let currentVal = parseInt(slider.value);
+    let newVal = currentVal + amount;
+
+    // Clamp value between min (15) and max (250)
+    if (newVal > 250) newVal = 250;
+    if (newVal < 15) newVal = 15;
+
+    // Update Input and Display
+    slider.value = newVal;
+    display.innerText = newVal;
+}
+
 // --- CORE STENO ENGINE ---
 function initDisplay() {
     const text = document.getElementById('textInput').value.trim();

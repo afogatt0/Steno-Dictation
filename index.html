@@ -28,7 +28,12 @@
         <div class="input-group">
             <label class="label-text">Speed (WPM)</label>
             <div class="speed-row">
+                <button class="btn-control" onclick="adjustSpeed(-5)">−</button>
+                
                 <input type="range" id="wpmSlider" min="15" max="250" value="50">
+                
+                <button class="btn-control" onclick="adjustSpeed(5)">+</button>
+                
                 <span id="wpmVal">50</span>
             </div>
         </div>
