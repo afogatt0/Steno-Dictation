@@ -12,7 +12,10 @@
 <div class="container">
     <header>
         <h1>Steno Dictation</h1>
-        <button id="themeToggle" class="btn-icon" onclick="toggleTheme()">🌓</button>
+        <div class="header-btns">
+            <button class="btn-icon" onclick="window.open('https://greggdict.rliu.dev/', '_blank')" title="Open Gregg Dictionary">📖</button>
+            <button id="themeToggle" class="btn-icon" onclick="toggleTheme()">🌓</button>
+        </div>
     </header>
     
     <div id="displayArea">Press Play or Scan a document to begin...</div>
@@ -29,11 +32,8 @@
             <label class="label-text">Speed (WPM)</label>
             <div class="speed-row">
                 <button class="btn-control" onclick="adjustSpeed(-5)">−</button>
-                
                 <input type="range" id="wpmSlider" min="15" max="250" value="50">
-                
                 <button class="btn-control" onclick="adjustSpeed(5)">+</button>
-                
                 <span id="wpmVal">50</span>
             </div>
         </div>
@@ -41,8 +41,8 @@
 
     <div class="text-section">
         <div class="stats">
-            <label class="label-text">Practice Text</label>
-            <span class="word-count"><span id="wordCount">0</span> words</span>
+            <label class="label-text">Practice Text:</label>
+            <span class="word-count"><span id="wordCount"> </span> words</span>
         </div>
         <div class="scanner-bar">
             <button type="button" class="btn-scan" onclick="startScanner()">Scan Text</button>
@@ -60,10 +60,8 @@
     <div class="modal-content">
         <video id="video" autoplay playsinline></video>
         <canvas id="canvas" style="display:none;"></canvas>
-        
         <div id="ocrStatus" class="status-msg">Position text in view</div>
         <div id="loadingSpinner" class="spinner" style="display: none;"></div>
-
         <div class="modal-actions">
             <button onclick="captureImage()" class="btn-play">Capture</button>
             <button onclick="closeScanner()" class="btn-stop">Cancel</button>
@@ -74,7 +72,7 @@
 <script src="script.js"></script>
 <script>
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js'); // Optional PWA support
+        navigator.serviceWorker.register('sw.js'); 
     }
 </script>
 </body>
